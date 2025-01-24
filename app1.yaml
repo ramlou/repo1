@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app-deployment
+  labels:
+    app: python-app
+spec:
+  replicas: 3 # Nombre de pods à répliquer
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: harbor-server.test.intel/agriculture/app1:latest # Remplacez par l'image Docker exacte
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        env: # Ajoutez vos variables d'environnement ici si nécessaire
+        - name: ENV_VAR_NAME
+          value: "value"
