@@ -33,5 +33,5 @@ spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    port: 80          # Port exposé hors Kubernetes
+    port: 9999          # Port exposé hors Kubernetes
     targetPort: 8080  # Port utilisé par l'application
